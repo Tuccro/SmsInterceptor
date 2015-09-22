@@ -24,7 +24,6 @@ public class SmsReceiver extends BroadcastReceiver {
             Bundle bundle = intent.getExtras();
 
             if (bundle != null) {
-
                 Object[] pdus = (Object[]) bundle.get("pdus");
                 SmsMessage[] messages = new SmsMessage[pdus.length];
 
@@ -36,7 +35,6 @@ public class SmsReceiver extends BroadcastReceiver {
                 }
 
                 for (SmsMessage message : messages) {
-
                     String strMessageFrom = message.getDisplayOriginatingAddress();
                     String strMessageBody = message.getDisplayMessageBody();
 

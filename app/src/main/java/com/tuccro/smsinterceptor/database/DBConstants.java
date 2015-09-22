@@ -14,4 +14,10 @@ public abstract class DBConstants {
             "\t`sender`\tTEXT,\n" +
             "\t`message`\tTEXT\n" +
             ");";
+
+    public static final String DB_TABLE_SMS = "sms";
+
+    public static final String DB_SMS_DATE = "date";
+    public static final String DB_SMS_SENDER = "sender";
+    public static final String DB_SMS_MESSAGE = "message";
 }

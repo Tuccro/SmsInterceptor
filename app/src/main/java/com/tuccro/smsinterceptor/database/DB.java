@@ -15,27 +15,38 @@ public class DB {
     SQLiteDatabase database;
 
     public DB(Context context) {
-
         dbHelper = new DBHelper(context);
     }
 
+    /**
+     * Open writable database
+     */
     public void openDataBase() {
         database = dbHelper.getWritableDatabase();
     }
 
+    /**
+     * Close database
+     */
     public void closeDataBase() {
         database.close();
     }
 
+    /**
+     * Add new entry to table "sms"
+     *
+     * @param sender  sender of SMS
+     * @param message body of SMS
+     */
     public void addSmsToDB(String sender, String message) {
 
         ContentValues cv = new ContentValues();
-        cv.put("date", System.currentTimeMillis());
-        cv.put("sender", sender);
-        cv.put("message", message);
+        cv.put(DBConstants.DB_SMS_DATE, System.currentTimeMillis());
+        cv.put(DBConstants.DB_SMS_SENDER, sender);
+        cv.put(DBConstants.DB_SMS_MESSAGE, message);
 
         try {
-            database.insert("sms", null, cv);
+            database.insert(DBConstants.DB_TABLE_SMS, null, cv);
         } catch (SQLException e) {
             Log.e("DB Error:", e.getMessage());
         }
